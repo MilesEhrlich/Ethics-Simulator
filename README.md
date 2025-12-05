@@ -14,7 +14,7 @@ This simulation addresses the tension between maximizing overall societal benefi
 
 | Framework | Goal | Methodological Detail | Core Conflict |
 | :--- | :--- | :--- | :--- |
-| **Utilitarianism** | **Maximize Total Utility** (Life-Years Saved). | Prioritizes individuals based on a calculated **Utility Score**: $$risk \times life\_expectancy \times (1 + 30\% \text{ essential bonus})$$. | Treats individuals as means to maximize the aggregate good. |
+| **Utilitarianism** | **Maximize Total Utility** (Life-Years Saved). | Prioritizes individuals based on a calculated **Utility Score**: $$risk \times$$ life expectancy $$\times (1 + 30$$% essential bonus). | Treats individuals as means to maximize the aggregate good. |
 | **Kantianism** | **Fair Distribution** respecting individual dignity. | **User selects one duty-based method:** Duty of Formal Fairness (Lottery), Duty to the Weakest (Highest Vulnerability First), or Duty of Proportional Equality (Equal Distribution). | Upholds duty and fairness but may result in fewer total lives saved. |
 
 ### Features
