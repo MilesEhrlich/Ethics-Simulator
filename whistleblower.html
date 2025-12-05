@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Whistleblower</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Whistleblower</h1>
+            <p class="subtitle">A Choice Between Duty, Consequences, and Virtue</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="vaccine.html" class="nav-link">Vaccine Distribution</a>
+            <a href="whistleblower.html" class="nav-link active">Whistleblower Dilemma</a>
+        </nav>
+
+        <section class="dilemma-intro" id="dilemmaIntro">
+            <div class="dilemma-card">
+                <h2>The Situation</h2>
+                <p>You are a mid-level executive at a major pharmaceutical company. During a routine audit, you discover that your company has been carefully hiding data about a life-threatening side effect of one of its best-selling medications. The side effect has already caused multiple deaths, and the company is actively hiding this information from the publicto protect profits.</p>
+                
+                <p><strong>You are faced with a tough decision:</strong></p>
+                <ul>
+                    <li>If you become a whistleblower, you will expose the truth and potentially save lives.</li>
+                    <li>However, you will be blacklisted from the industry, lose your career, and your family will face severe financial trouble.</li>
+                    <li>There's no guarantee that your actions will actually end up stopping the company, they might find ways to continue or delay consequences.</li>
+                    <li>You have a chance to preserve your integrity, but what will result of your life?</li>
+                </ul>
+
+                <p class="dilemma-question"><strong>What do you do?</strong></p>
+            </div>
+
+            <div class="pathways-section">
+                <h2>Choose Your Ethical Framework</h2>
+                <div class="pathways-grid">
+                    <div class="pathway-card" data-pathway="kantian">
+                        <h3>Kantian Duty</h3>
+                        <p>Follow your categorical imperative: Telling the truth is a perfect duty. The consequences are irrelevant.</p>
+                        <button class="pathway-btn">Choose This Path</button>
+                    </div>
+                    <div class="pathway-card" data-pathway="utilitarian">
+                        <h3>Utilitarian Outcome</h3>
+                        <p>Maximize overall welfare. Consider: Will whistleblowing actually stop the harm? What are the total consequences for all affected?</p>
+                        <button class="pathway-btn">Choose This Path</button>
+                    </div>
+                    <div class="pathway-card" data-pathway="virtue">
+                        <h3>Virtue Ethics Balance</h3>
+                        <p>Find the mean between cowardice and recklessness. What would a virtuous person do? Consider your roles and character.</p>
+                        <button class="pathway-btn">Choose This Path</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="narrative-section" id="narrativeSection" style="display: none;">
+            <div class="narrative-content" id="narrativeContent"></div>
+            <div class="choice-buttons" id="choiceButtons"></div>
+        </section>
+
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <h2>Your Journey's Outcome</h2>
+            <div class="outcome-content" id="outcomeContent"></div>
+            
+            <div class="score-display">
+                <div class="score-card integrity">
+                    <h3>Integrity Score</h3>
+                    <div class="score-value" id="integrityScore">0</div>
+                    <div class="score-bar">
+                        <div class="score-fill integrity-fill" id="integrityBar" style="width: 0%"></div>
+                    </div>
+                    <p class="score-description">Measures your adherence to moral principles and personal integrity, regardless of consequences.</p>
+                </div>
+                <div class="score-card welfare">
+                    <h3>Welfare Score</h3>
+                    <div class="score-value" id="welfareScore">0</div>
+                    <div class="score-bar">
+                        <div class="score-fill welfare-fill" id="welfareBar" style="width: 0%"></div>
+                    </div>
+                    <p class="score-description">Measures overall well-being: your family's financial stability, career prospects, and general happiness.</p>
+                </div>
+            </div>
+
+            <div class="philosophical-analysis" id="philosophicalAnalysis"></div>
+
+            <button class="btn-primary" id="restartBtn">Explore Another Path</button>
+        </section>
+    </div>
+
+    <script src="whistleblower.js"></script>
+</body>
+</html>
+

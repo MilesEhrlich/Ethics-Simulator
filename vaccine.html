@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccine Distribution Ethics Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vaccine Distribution Ethics Simulator</h1>
+            <p class="subtitle">Exploring Utilitarian vs. Kantian Approaches to Pandemic Resource Allocation</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="vaccine.html" class="nav-link active">Vaccine Distribution</a>
+            <a href="whistleblower.html" class="nav-link">Whistleblower Dilemma</a>
+        </nav>
+
+        <section class="intro">
+            <div class="ethical-frameworks">
+                <div class="framework-card utilitarian">
+                    <h3>Utilitarian Approach</h3>
+                    <p>Maximize total utility: Prioritize based on who has the highest risk of death or who is most essential to society's functioning. Goal: Maximize the total number of quality years of life saved.</p>
+                    <small>References: Bentham, Mill, Singer</small>
+                </div>
+                <div class="framework-card kantian">
+                    <h3>Kantian Approach</h3>
+                    <p>Fair distribution: Prioritize based on fairness or duty, making sure no person is treated as a means to the greater good. Methods: Lottery or highest vulnerability regardless of social utility.</p>
+                    <small>References: Kant, O'Neill</small>
+                </div>
+            </div>
+        </section>
+
+        <section class="input-section">
+            <h2>Simulation Parameters</h2>
+            <form id="simulationForm">
+                <div class="form-group">
+                    <label for="totalVaccines">Total Vaccines Available:</label>
+                    <input type="number" id="totalVaccines" min="1" value="1000" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Population Demographics:</label>
+                    <div class="demographics-grid">
+                        <div class="demo-group">
+                            <label for="youngCount">Young (18-40):</label>
+                            <input type="number" id="youngCount" min="0" value="2000" required>
+                            <label for="youngRisk">Risk Level (0-1):</label>
+                            <input type="number" id="youngRisk" min="0" max="1" step="0.01" value="0.02" required>
+                            <label for="youngEssential">Essential Workers (%):</label>
+                            <input type="number" id="youngEssential" min="0" max="100" value="30" required>
+                        </div>
+                        <div class="demo-group">
+                            <label for="middleCount">Middle-Aged (41-60):</label>
+                            <input type="number" id="middleCount" min="0" value="1500" required>
+                            <label for="middleRisk">Risk Level (0-1):</label>
+                            <input type="number" id="middleRisk" min="0" max="1" step="0.01" value="0.05" required>
+                            <label for="middleEssential">Essential Workers (%):</label>
+                            <input type="number" id="middleEssential" min="0" max="100" value="25" required>
+                        </div>
+                        <div class="demo-group">
+                            <label for="elderlyCount">Elderly (61+):</label>
+                            <input type="number" id="elderlyCount" min="0" value="1000" required>
+                            <label for="elderlyRisk">Risk Level (0-1):</label>
+                            <input type="number" id="elderlyRisk" min="0" max="1" step="0.01" value="0.15" required>
+                            <label for="elderlyEssential">Essential Workers (%):</label>
+                            <input type="number" id="elderlyEssential" min="0" max="100" value="5" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lifeExpectancy">Average Remaining Life Years (Young:Middle:Elderly):</label>
+                    <input type="text" id="lifeExpectancy" value="50:30:15" placeholder="50:30:15" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="kantianMethod">Kantian Distribution Method:</label>
+                    <select id="kantianMethod">
+                        <option value="lottery">Equal Chance Lottery</option>
+                        <option value="vulnerability">Highest Vulnerability First</option>
+                        <option value="equal">Equal Distribution Across Groups</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">Run Simulation</button>
+            </form>
+        </section>
+
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <h2>Simulation Results</h2>
+            
+            <div class="results-comparison">
+                <div class="result-card utilitarian-result">
+                    <h3>Utilitarian Distribution</h3>
+                    <div class="metrics">
+                        <div class="metric">
+                            <span class="metric-label">Vaccines Allocated:</span>
+                            <span class="metric-value" id="utilVaccines"></span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Lives Saved:</span>
+                            <span class="metric-value" id="utilLives"></span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Life-Years Saved:</span>
+                            <span class="metric-value" id="utilLifeYears"></span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Vulnerable Protected:</span>
+                            <span class="metric-value" id="utilVulnerable"></span>
+                        </div>
+                    </div>
+                    <div class="distribution-breakdown">
+                        <h4>Distribution by Age Group:</h4>
+                        <div id="utilBreakdown"></div>
+                    </div>
+                </div>
+
+                <div class="result-card kantian-result">
+                    <h3>Kantian Distribution</h3>
+                    <div class="metrics">
+                        <div class="metric">
+                            <span class="metric-label">Vaccines Allocated:</span>
+                            <span class="metric-value" id="kantVaccines"></span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Lives Saved:</span>
+                            <span class="metric-value" id="kantLives"></span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Life-Years Saved:</span>
+                            <span class="metric-value" id="kantLifeYears"></span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Vulnerable Protected:</span>
+                            <span class="metric-value" id="kantVulnerable"></span>
+                        </div>
+                    </div>
+                    <div class="distribution-breakdown">
+                        <h4>Distribution by Age Group:</h4>
+                        <div id="kantBreakdown"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visualization-section">
+                <h3>Comparative Analysis</h3>
+                <div class="charts-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+                <div class="analysis-text" id="analysisText"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
