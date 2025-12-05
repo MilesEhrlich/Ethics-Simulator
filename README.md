@@ -2,7 +2,7 @@
 
 This simulator is designed to help people understand how different ethical frameworks approach real-world issues. Each simulation demonstrates the strengths and weaknesses of philosophical approaches, showing the trade-offs that come with moral decision-making. 
 
-## 💡 Overview
+## Overview
 
 This simulator provides two distinct, interactive dilemmas to demonstrate how **Utilitarianism**, **Kantian Ethics**, and **Virtue Ethics** approach complex moral trade-offs in resource allocation and professional conduct.
 
